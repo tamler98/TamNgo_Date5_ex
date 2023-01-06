@@ -68,14 +68,12 @@ public class Main {
         List<Orders> listOrder = (List<Orders>) orderRepository.findAll();
         for (Orders order: listOrder) {
             System.out.println(order.toString());
+            List<OrderDetails> listOrderDetail = (List<OrderDetails>) orderDetailRepository.getOrderDetailByOrderId(order.getId());
+            for (OrderDetails orderDetailAll: listOrderDetail) {
+                System.out.println(orderDetailAll.toString());
+            }
         }
-        System.out.println("* List all orderDetail");
-        List<OrderDetails> listOrderDetail = (List<OrderDetails>) orderDetailRepository.findAll();
-        for (OrderDetails orderDetailAll: listOrderDetail) {
-            System.out.println(orderDetailAll.toString());
-        }
-
-}
+    }
     public static void getOrderAndOrderDetailByOrderId() {
         Scanner sc = new Scanner(System.in);
         System.out.print("* Insert OrderId you want to get: ");
