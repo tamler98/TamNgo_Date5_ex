@@ -15,8 +15,8 @@ public interface OrderRepository extends CrudRepository<Orders, Integer> {
     @Query(value = "select * from orders as o\n" +
             "inner join orderdetails as oo\n" +
             "on o.id = oo.orderId\n" +
-            "where oo.productName = 'Darius'", nativeQuery = true)
-    List<Orders> getOrderByProductName();
+            "where oo.productName = ?1", nativeQuery = true)
+    List<Orders> getOrderByProductName(String productName);
 
     @Query(value = "select * from orders as o\n" +
             "inner join orderdetails as od\n" +
